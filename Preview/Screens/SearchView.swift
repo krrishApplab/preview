@@ -12,7 +12,7 @@ struct SearchView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 12) {
-                Text("Search")
+                Text("Favourite Items**")
                     .font(.largeTitle.bold())
 
                 Text("Find what you're looking for.")
