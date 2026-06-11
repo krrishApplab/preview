@@ -7,15 +7,25 @@
 
 import SwiftUI
 
+/// Root view that shows the splash screen on launch, then transitions
+/// to the main tab interface.
 struct ContentView: View {
+    @State private var isActive = false
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("My Favourites")
+        Group {
+            if isActive {
+                MainTabView()
+            } else {
+                SplashView()
+            }
         }
-        .padding()
+        .task {
+            try? await Task.sleep(for: .seconds(2))
+            withAnimation(.easeInOut) {
+                isActive = true
+            }
+        }
     }
 }
 
